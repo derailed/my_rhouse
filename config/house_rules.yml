@@ -1,0 +1,26 @@
+common: &common
+  host:           localhost  
+  beanstalk_port: 7777
+  rhouse_port:    4567
+  requires_db:    true
+  log_level:      :debug
+  consume_events: true
+  
+development:
+  <<:             *common
+  host:           192.168.0.78
+  db_env:         :production_local
+  
+test:
+  <<:             *common  
+  db_env:         :test
+    
+production:
+  <<:             *common
+  db_env:         :production
+  log_file:       /var/log/pluto/RH_HouseRules.log
+  
+production_local:
+  <<:             *common
+  host:           192.168.0.78  
+  db_env:         :production_local

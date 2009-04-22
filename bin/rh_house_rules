@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+# -----------------------------------------------------------------------------
+# This is a sample queue consumer. It grabs events of the queue and fire off
+# rules based on events found on the queue
+#
+# Author: Fernand
+# -----------------------------------------------------------------------------
+require 'rubygems'
+require 'main'
+require 'rhouse'
+
+$: << File.expand_path(File.join(File.dirname(__FILE__),"..","lib"))
+require 'my_rhouse'
+
+Main {
+  description <<-EOS
+  HouseRules Worker - Process device events and fires off event handling rules.
+  EOS
+  
+  argument "environment" do
+    description "The environment in which to run the utility"
+    default     ENV["RH_ENV"] || "test"
+    attribute   "environment"
+    argument    :required    
+  end
+      
+  def run
+    MyRhouse::HouseRules.new( 'House Rules', environment ).wait_for_event
+    exit( 0 )    
+  end  
+}

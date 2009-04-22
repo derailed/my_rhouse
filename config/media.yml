@@ -1,0 +1,13 @@
+testing: &testing
+  music_depot: /Users/fgaliana/work/experiments/rhouse/gems/my_rhouse/test/music
+
+mac: &mac
+  music_depot: /Users/fgaliana/Music/iTunes/iTunes Music/
+
+eeebox: &eeebox
+  music_depot: /home/public/data/audio
+    
+test:             *testing
+development:      *mac
+production:       *eeebox
+production_local: *mac

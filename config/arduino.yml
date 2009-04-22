@@ -1,0 +1,17 @@
+common: &common
+  baud_rate: 9600
+  data_bits: 8
+  stop_bits: 1
+  
+mac: &mac
+  <<:          *common
+  serial_port: /dev/tty.usbserial-A6008bE6
+
+rhouse: &rhouse
+  <<:          *common
+  serial_port: /dev/ttyUSB0
+  
+test:             *mac
+development:      *mac
+production_local: *mac
+production:       *rhouse
