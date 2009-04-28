@@ -3,8 +3,6 @@
 # -----------------------------------------------------------------------------
 # This is a sample queue consumer. It grabs events of the queue and fire off
 # rules based on events found on the queue
-#
-# Author: Fernand
 # -----------------------------------------------------------------------------
 require 'rubygems'
 require 'main'
